@@ -1,0 +1,6 @@
+apiVersion: k3d.io/v1alpha4
+kind: Simple
+metadata:
+  name: argo-flux
+servers: 1 
+agents: 2 
