@@ -3,4 +3,8 @@ kind: Simple
 metadata:
   name: argo-flux
 servers: 1 
-agents: 2 
+agents: 3
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
