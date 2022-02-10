@@ -45,7 +45,7 @@
       repo: "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
       filename: kubernetes
       update_cache: yes
-  - name: Install zsh shell and kubeclt
+  - name: Install zsh shell and kubectl
     apt: 
       name: 
       - zsh
@@ -58,5 +58,16 @@
       groups:
       - docker
       shell: /bin/zsh
-  
+  - name: Verify K3D installation
+    stat:
+      path: /usr/local/bin/k3d
+    register: k3d
+  - name: Install k3d and start cluster
+    block:
+    - name: install K3D
+      shell: curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
+    - name: Create Cluster
+      command: k3d cluster create --config /home/{{user}}/Documents/workspace/k3d/one_master_3_workers.yml
+      become_user: '{{user}}'
+    when: not k3d.stat.exists
 
