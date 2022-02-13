@@ -67,7 +67,7 @@
     - name: install K3D
       shell: curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
     - name: Create Cluster
-      command: k3d cluster create --config /home/{{user}}/Documents/workspace/k3d/one_master_3_workers.yml
+      command: k3d cluster create --config /home/{{user}}/Documents/workspace/k3d/one_master_5_workers.yml
       become_user: '{{user}}'
     when: not k3d.stat.exists
 

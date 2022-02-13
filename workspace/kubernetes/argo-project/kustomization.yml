@@ -2,3 +2,4 @@ resources:
 - ../argo-cd
 - project.yml
 - ../argo-events
+- ../argo-workflows
