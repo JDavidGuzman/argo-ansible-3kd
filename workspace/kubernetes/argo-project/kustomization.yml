@@ -3,3 +3,5 @@ resources:
 - project.yml
 - ../argo-events
 - ../argo-workflows
+- ../argo-rollouts
+- ../sealed-secrets
